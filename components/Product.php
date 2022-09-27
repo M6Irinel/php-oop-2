@@ -34,6 +34,11 @@ class Product
             $this->weight = $weight;
     }
 
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
     public function getPrice()
     {
         return $this->price;

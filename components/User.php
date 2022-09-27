@@ -5,12 +5,16 @@ class User
     protected $name = '';
     protected $nrProduct = [];
     protected $totalPrice = 0;
+    protected $shippingPrice = 0;
+    protected $shippingVolume = 0;
 
     function __construct($param)
     {
         $this->setName($param['name']);
         $this->setNrProduct($param['nrProduct']);
         $this->setTotalPrice($param['nrProduct']);
+        $this->setShippingVolume($param['nrProduct']);
+        $this->setShipingPriceOver200($this->shippingVolume);
     }
 
     public function setName($name)
@@ -37,5 +41,26 @@ class User
     public function getTotalPrice()
     {
         return $this->totalPrice;
+    }
+
+    public function setShippingVolume($volume)
+    {
+        $vol = 0;
+        foreach ($volume as $v) {
+            $vol += $v->getVolume();
+        }
+        $this->shippingVolume = $vol;
+    }
+
+    public function setShipingPriceOver200($shippingVolume)
+    {
+        if ($shippingVolume < 100)
+            $this->shippingPrice = 10;
+        else if ($shippingVolume >= 100 && $shippingVolume < 200)
+            $this->shippingPrice = 50;
+        else if ($shippingVolume >= 200 && $shippingVolume < 300)
+            $this->shippingPrice = 80;
+        else if ($shippingVolume >= 300)
+            $this->shippingPrice = 120;
     }
 }

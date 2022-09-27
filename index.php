@@ -8,7 +8,7 @@ include_once __DIR__ . '/components/User.php';
 $paramCrochete = [
     'name' => 'Crochette di manzo',
     'description' => 'Le migliori crochette del mercato pet',
-    'price' => 29.98,
+    'price' => 39.98,
     'weight' => 20,
     'volume' => 100,
     'brand' => 'Miracoli',
