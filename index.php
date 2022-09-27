@@ -1,8 +1,9 @@
 <?php
 
-include_once __DIR__.'/components/PetFood.php';
-include_once __DIR__.'/components/Suit.php';
-include_once __DIR__.'/components/Technology.php';
+include_once __DIR__ . '/components/PetFood.php';
+include_once __DIR__ . '/components/Suit.php';
+include_once __DIR__ . '/components/Technology.php';
+include_once __DIR__ . '/components/User.php';
 
 $paramCrochete = [
     'name' => 'Crochette di manzo',
@@ -17,8 +18,7 @@ $paramCrochete = [
 ];
 
 $crocchette = new PetFood($paramCrochete);
-
-var_dump($crocchette);
+// var_dump($crocchette);
 
 $paramJacket = [
     'name' => 'Giacca invernale',
@@ -34,8 +34,7 @@ $paramJacket = [
 ];
 
 $jacket = new Suit($paramJacket);
-
-var_dump($jacket);
+// var_dump($jacket);
 
 $paramKeyboard = [
     'name' => 'Tastiera meccanica',
@@ -52,6 +51,17 @@ $paramKeyboard = [
 ];
 
 $keyboard = new Technology($paramKeyboard);
+// var_dump($keyboard);
 
-var_dump($keyboard);
+$paramCliente1 = [
+    'name' => 'Baluma Paolo',
+    'nrProduct' => [
+        $crocchette,
+        $jacket,
+        $keyboard
+    ]
+];
 
+$cliente1 = new User($paramCliente1);
+
+var_dump($cliente1);
