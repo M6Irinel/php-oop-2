@@ -24,7 +24,7 @@ class Technology extends Product
 
     public function setNrKeys($nrKeys)
     {
-        if (gettype($nrKeys) == 'int')
+        if (gettype($nrKeys) == 'integer')
             $this->nrKeys = $nrKeys;
     }
 
