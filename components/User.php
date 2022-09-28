@@ -17,20 +17,26 @@ class User
         $this->setShipingPriceOver200($this->shippingVolume);
     }
 
-    public function setName(string $name)
+    public function setName($name)
     {
-        try  {
+        try {
+            if(gettype($name) == 'integer') throw new Exception('integer');
+            if(gettype($name) == 'float')   throw new Exception('float');
+            if(gettype($name) == 'boolean') throw new Exception('boolean');
+            if(gettype($name) == 'array')   throw new Exception('array');
+            if(gettype($name) == 'object')  throw new Exception('object');
+            
             $this->name = $name;
-        } catch (Exception $e) {
-            throw new Exception ($e, 'Attenzione: il valore della variabile non è una stringa');
 
-            echo 'Attenzione: il valore della variabile non è una stringa', $e->getMessage(), '\n';
+        } catch (Exception $e) {
+            echo 'Wrong type $name, expected string, received ', $e->getMessage();
         } finally {
             // echo 'Finito';
         }
     }
 
-    public function test() {
+    public function test()
+    {
         try {
             throw new Exception('foo');
         } catch (Exception $e) {
