@@ -17,10 +17,27 @@ class User
         $this->setShipingPriceOver200($this->shippingVolume);
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
-        if (gettype($name) == 'string')
+        try  {
             $this->name = $name;
+        } catch (Exception $e) {
+            throw new Exception ($e, 'Attenzione: il valore della variabile non è una stringa');
+
+            echo 'Attenzione: il valore della variabile non è una stringa', $e->getMessage(), '\n';
+        } finally {
+            // echo 'Finito';
+        }
+    }
+
+    public function test() {
+        try {
+            throw new Exception('foo');
+        } catch (Exception $e) {
+            return 'catch';
+        } finally {
+            return 'finally';
+        }
     }
 
     public function setNrProduct($nrProduct)

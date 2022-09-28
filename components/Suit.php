@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . '/Product.php';
+include_once __DIR__ . '/trait-Color.php';
 
 class Suit extends Product
 {
@@ -13,10 +14,6 @@ class Suit extends Product
         $this->setColor($param['color']);
         $this->size = $param['size'];
     }
-
-    public function setColor($color)
-    {
-        if (gettype($color) == 'string')
-            $this->color = $color;
-    }
+    
+    use Color;
 }

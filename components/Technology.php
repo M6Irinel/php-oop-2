@@ -1,6 +1,7 @@
 <?php
 
 include_once __DIR__ . '/Product.php';
+include_once __DIR__.'/trait-Color.php';
 
 class Technology extends Product
 {
@@ -16,11 +17,7 @@ class Technology extends Product
         $this->setLed($param['led']);
     }
 
-    public function setColor($color)
-    {
-        if (gettype($color) == 'string')
-            $this->color = $color;
-    }
+    use Color;
 
     public function setNrKeys($nrKeys)
     {
